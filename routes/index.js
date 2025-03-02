@@ -225,24 +225,24 @@ api.put('/project/:id/todo', async (req, res) => {
     res.send(todo)
 })
 
-// api.use('/project/:id/task', async (req, res, next) => {
-//     if (req.method !== "GET") return next()
+ api.use('/project/:id/task', async (req, res, next) => {
+ if (req.method !== "GET") return next()
 
-//     if (!req.params.id) return res.status(500).send(`server error`);
+     if (!req.params.id) return res.status(500).send(`server error`);
 
-//     try {
-//         const data = await Project.find({ _id: mongoose.Types.ObjectId(req.params.id) }, { task: 1 })
-//         return res.send(data)
-//     } catch (error) {
-//         return res.send(error)
-//     }
+     try {
+         const data = await Project.find({ _id: mongoose.Types.ObjectId(req.params.id) }, { task: 1 })
+         return res.send(data)
+     } catch (error) {
+         return res.send(error)
+     }
 
 
-// })
+ })
 
-// api.get('/project/:id/task/:taskId', (req, res) => {
-//     res.send(req.params)
-// })
+ api.get('/project/:id/task/:taskId', (req, res) => {
+     res.send(req.params)
+ })
 
 
 
